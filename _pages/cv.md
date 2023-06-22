@@ -3,10 +3,10 @@ layout: archive
 title: "CV"
 permalink: /cv/
 author_profile: true
-redirect_from:
+redirect_from:<a href="https://github.com/AmmarKamoona/AmmarKamoona.github.io/blob/master/files/Dr_Kamoona_Resume.pdf">mypdf</a>
   - /resume
 ---
-
+"
 {% include base_path %}
 
 Education
@@ -57,3 +57,4 @@ Teaching
 Service and leadership
 ======
 * Currently signed in to 43 different slack teams
+"
