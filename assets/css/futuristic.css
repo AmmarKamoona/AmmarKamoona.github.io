@@ -1,0 +1,408 @@
+/* =============================================================
+   Futuristic overlay for the Minimal Mistakes academic theme
+   -------------------------------------------------------------
+   Dark deep-space background with a subtle grid, cyan/violet
+   accents, monospace-inflected headings, glassy cards, and
+   glowing focus states. Loaded after main.css so all rules
+   override the base theme.
+   ============================================================= */
+
+:root {
+  --bg-0: #05070d;
+  --bg-1: #0a0f1c;
+  --bg-2: #101828;
+  --bg-3: #17203a;
+  --surface: rgba(15, 23, 42, 0.72);
+  --surface-strong: rgba(15, 23, 42, 0.92);
+  --border: rgba(120, 180, 255, 0.14);
+  --border-strong: rgba(120, 180, 255, 0.28);
+
+  --text-0: #eaf1ff;
+  --text-1: #c5d0e6;
+  --text-2: #8a98b8;
+  --text-3: #5b6784;
+
+  --accent: #22d3ee;      /* cyan */
+  --accent-2: #a78bfa;    /* violet */
+  --accent-3: #34d399;    /* mint */
+  --danger: #fb7185;
+
+  --grad-1: linear-gradient(135deg, #22d3ee 0%, #a78bfa 55%, #f472b6 100%);
+  --glow-cyan: 0 0 24px rgba(34, 211, 238, 0.35);
+  --glow-violet: 0 0 24px rgba(167, 139, 250, 0.35);
+
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 18px;
+
+  --font-sans: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ---------- Global background ---------- */
+html, body {
+  background: var(--bg-0);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  background:
+    radial-gradient(1200px 700px at 15% -10%, rgba(34, 211, 238, 0.10), transparent 60%),
+    radial-gradient(900px 600px at 85% 10%, rgba(167, 139, 250, 0.10), transparent 60%),
+    radial-gradient(1000px 700px at 50% 120%, rgba(52, 211, 153, 0.06), transparent 60%),
+    var(--bg-0);
+  min-height: 100vh;
+}
+
+/* subtle grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(120, 180, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 180, 255, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(1000px 700px at 50% 20%, #000 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(1000px 700px at 50% 20%, #000 40%, transparent 90%);
+}
+
+.page__content, .masthead, #main, .greedy-nav, .archive, .page {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6,
+.page__title, .page__meta,
+.archive__item-title, .archive__subtitle,
+.sidebar h3 {
+  font-family: var(--font-display);
+  color: var(--text-0);
+  letter-spacing: -0.01em;
+}
+
+h1, .page__title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.35em;
+  margin-top: 2.2em;
+}
+
+/* Accent bar on CV section headers */
+.page__content h1::before,
+.page__content h2::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 0.6em;
+  border-radius: 2px;
+  background: var(--grad-1);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+code, pre, kbd, samp, tt {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+code {
+  color: var(--accent);
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.35em;
+}
+
+pre, .highlight, .highlighter-rouge {
+  background: var(--bg-2) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ---------- Links ---------- */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease, color 0.2s ease;
+}
+a:hover, a:focus {
+  color: var(--accent-2);
+  background-image: linear-gradient(var(--accent-2), var(--accent-2));
+  background-size: 100% 1px;
+}
+
+/* ---------- Masthead / top navigation ---------- */
+.masthead {
+  background: linear-gradient(180deg, rgba(5, 7, 13, 0.9) 0%, rgba(5, 7, 13, 0.55) 100%);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(120,180,255,0.05), 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.masthead__inner-wrap {
+  padding: 1em;
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-0) !important;
+  background: var(--grad-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.site-title::before {
+  content: "◈ ";
+  -webkit-text-fill-color: var(--accent);
+  color: var(--accent);
+}
+
+.greedy-nav {
+  background: transparent;
+}
+
+.greedy-nav a {
+  color: var(--text-1) !important;
+  font-weight: 500;
+  background-image: none;
+  padding: 0.5em 0.9em;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.greedy-nav a:hover {
+  color: var(--accent) !important;
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.greedy-nav .visible-links a::before {
+  background: var(--grad-1);
+  height: 2px;
+}
+
+/* ---------- Author sidebar profile card ---------- */
+.sidebar.sticky {
+  color: var(--text-1);
+}
+
+.author__avatar img {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--bg-1), var(--bg-1)) padding-box,
+    var(--grad-1) border-box;
+  border-radius: 50%;
+  box-shadow: var(--glow-cyan), 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.author__name {
+  font-family: var(--font-display);
+  color: var(--text-0);
+  font-weight: 600;
+}
+
+.author__bio {
+  color: var(--text-2);
+}
+
+.author__urls {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.author__urls li a {
+  color: var(--text-1);
+  background-image: none;
+}
+.author__urls li a:hover {
+  color: var(--accent);
+}
+.author__urls li a .fa,
+.author__urls li a .ai {
+  color: var(--accent);
+}
+
+/* ---------- Cards, archives, portfolio ---------- */
+.archive__item,
+.list__item,
+.page__inner-wrap {
+  color: var(--text-1);
+}
+
+.archive__item {
+  padding: 1.25em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  margin-bottom: 1.5em;
+}
+.archive__item:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45), 0 0 0 1px rgba(34,211,238,0.15);
+}
+
+.archive__item-title {
+  color: var(--text-0);
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin-top: 0;
+}
+.archive__item-title a {
+  color: var(--text-0);
+  background-image: none;
+}
+.archive__item-title a:hover {
+  color: var(--accent);
+}
+
+.archive__item-excerpt {
+  color: var(--text-2);
+}
+
+.page__meta,
+.page__date,
+.archive__item-info,
+.archive__subtitle {
+  font-family: var(--font-mono);
+  color: var(--text-3);
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Page content surfaces ---------- */
+.page__content {
+  color: var(--text-1);
+}
+
+.page__content ul, .page__content ol {
+  color: var(--text-1);
+}
+
+.page__content blockquote {
+  border-left: 3px solid var(--accent);
+  background: rgba(34, 211, 238, 0.05);
+  color: var(--text-1);
+  border-radius: var(--radius-sm);
+  padding: 0.8em 1em;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+  margin: 2.5em 0;
+}
+
+/* Emphasise strong/bold in dark theme */
+strong, b { color: var(--text-0); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--accent);
+  padding: 0.55em 1em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  background-image: none;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  color: var(--text-0);
+  background: rgba(34, 211, 238, 0.18);
+  box-shadow: var(--glow-cyan);
+}
+.btn--primary {
+  background: var(--grad-1);
+  color: #0a0f1c;
+  border: none;
+}
+.btn--primary:hover {
+  color: #0a0f1c;
+  filter: brightness(1.05);
+  box-shadow: var(--glow-violet);
+}
+
+/* ---------- Tables ---------- */
+table {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+th {
+  background: var(--bg-2);
+  color: var(--text-0);
+  font-family: var(--font-display);
+  border-bottom: 1px solid var(--border-strong);
+}
+td, th {
+  border-color: var(--border);
+}
+
+/* ---------- Footer ---------- */
+.page__footer {
+  background: linear-gradient(180deg, transparent, rgba(5,7,13,0.9));
+  border-top: 1px solid var(--border);
+  color: var(--text-2);
+}
+.page__footer a { color: var(--text-1); }
+.page__footer a:hover { color: var(--accent); }
+.page__footer-copyright { color: var(--text-3); font-family: var(--font-mono); font-size: 0.8em; }
+
+/* ---------- Focus rings ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Subtle scan-line accent for h1 on home ---------- */
+.page__hero-image,
+.page__hero {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #fff;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
