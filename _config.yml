@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Dr Ammar Kamoona"
 title_separator          : "-"
 name                     : &name "Ammar Kamoona"
-description              : &description "personal description"
+description              : &description "AI/ML researcher and educator — deep anomaly detection, transformer-based temporal learning, Vision Language Models, and computer vision for infrastructure systems."
 url                      : https://AmmarKamoona.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "AmmarKamoona/AmmarKamoona.github.io"
@@ -82,10 +82,10 @@ analytics:
 author:
   name             : "Ammar Kamoona"
   avatar           : "profile.png"
-  bio              : "Ph.D Machine learning & computer vision"
+  bio              : "AI/ML Researcher | RMIT Research Fellow | Powercor AI Scientist"
   location         : "Melbourne, Australia"
-  employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  employer         : "RMIT University / Powercor Australia"
+  pubmed           :
   googlescholar    : "https://scholar.google.com/citations?user=6ESCqksAAAAJ&hl=en"
   email            : "ammar.kamoona@rmit.edu.au"
   researchgate     :  "https://www.researchgate.net/profile/Ammar-Kamoona"
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "AmmarKamoona"
   google_plus      :
   keybase          :
   instagram        :
@@ -109,7 +109,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          :
   vine             :
   weibo            :
   xing             :
